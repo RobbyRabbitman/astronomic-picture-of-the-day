@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { Config } from '@core/model';
+import { NgxLoggerLevel } from 'ngx-logger/lib/types/logger-level.enum';
 
 export const environment: Config = {
   production: false,
@@ -10,6 +11,7 @@ export const environment: Config = {
     api: 'https://api.nasa.gov/planetary/apod',
     key: 'DEMO_KEY',
   },
+  logLevel: NgxLoggerLevel.TRACE,
 };
 
 /*
