@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Apod } from '@core/model';
+import { Apod, Health } from '@core/model';
 import { formatDateToYYYYMMDD } from '@core/utilities';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, mapTo } from 'rxjs/operators';
 import { ConfigService } from '@core/services/config';
 
 @Injectable({
@@ -18,5 +19,13 @@ export class DataService {
         api_key: this.configService.config.apod.key,
       },
     });
+  }
+
+  public healthCheck(): Observable<Health> {
+    // no health resource but whatever
+    return this.fetchPicture(new Date()).pipe(
+      mapTo(Health.OK),
+      catchError((_) => of(Health.DOWN))
+    );
   }
 }
