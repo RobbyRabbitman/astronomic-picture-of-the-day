@@ -1,2 +1,2 @@
-export * from './apod';
 export * from './config';
+export * from './data';

@@ -2,8 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import { Config } from '@core/model';
+
+export const environment: Config = {
+  production: false,
+  apod: {
+    api: 'https://api.nasa.gov/planetary/apod',
+    key: 'DEMO_KEY',
+  },
 };
 
 /*
