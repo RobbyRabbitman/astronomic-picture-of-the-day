@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Apod, Health } from '@core/model';
+import { Apod, ApodApiInfo, Health } from '@core/model';
 import { formatDateToYYYYMMDD } from '@core/utilities';
 import { Observable, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
@@ -10,13 +10,21 @@ import { ConfigService } from '@core/services/config';
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient, private configService: ConfigService) {}
+  private readonly _apiInfo: ApodApiInfo;
+
+  constructor(private http: HttpClient, private configService: ConfigService) {
+    this._apiInfo = configService.config.apod;
+  }
+
+  get apiInfo(): ApodApiInfo {
+    return this._apiInfo;
+  }
 
   public fetchPicture(date: Date): Observable<Apod> {
-    return this.http.get<Apod>(this.configService.config.apod.api, {
+    return this.http.get<Apod>(this._apiInfo.api, {
       params: {
         date: formatDateToYYYYMMDD(date),
-        api_key: this.configService.config.apod.key,
+        api_key: this._apiInfo.key,
       },
     });
   }

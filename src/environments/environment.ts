@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { Config } from '@core/model';
-import { NgxLoggerLevel } from 'ngx-logger/lib/types/logger-level.enum';
+import { NgxLoggerLevel } from 'ngx-logger';
 
 export const environment: Config = {
   production: false,

@@ -1,1 +1,1 @@
-export { Config } from './Config';
+export { Config, ApodApiInfo } from './Config';
