@@ -21,6 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class CoreModule {
   constructor(store: StoreService) {
-    store.dispatchHealthCheck();
+    store.dispatchHealthCheck().subscribe();
   }
 }

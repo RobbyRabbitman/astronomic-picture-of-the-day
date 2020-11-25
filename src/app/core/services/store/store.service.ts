@@ -1,7 +1,9 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Health, Logger, LOGGER } from '@core/model';
-import { BehaviorSubject, merge } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Apod, Health, Logger, LOGGER } from '@core/model';
+import { formatDateToYYYYMMDD } from '@core/utilities';
+import { ErrorService } from '@shared/components';
+import { BehaviorSubject, merge, Observable } from 'rxjs';
+import { map, mapTo, tap } from 'rxjs/operators';
 import { DataService } from '../data';
 
 @Injectable({
@@ -9,6 +11,7 @@ import { DataService } from '../data';
 })
 export class StoreService {
   private _healthStatus$: BehaviorSubject<Health>;
+  private _pictures$: BehaviorSubject<Map<string, Apod>>;
 
   constructor(
     private data: DataService,
@@ -18,18 +21,39 @@ export class StoreService {
     this.log();
   }
 
-  public get healthStatus$() {
+  public get healthStatus$(): Observable<Health> {
     return this._healthStatus$.asObservable();
   }
 
-  public dispatchHealthCheck(): void {
-    this.data
-      .healthCheck()
-      .subscribe({ next: (value) => this._healthStatus$.next(value) });
+  public getPicture(date: Date = new Date()): Observable<Apod> {
+    return this._pictures$
+      .asObservable()
+      .pipe(map((pictures) => pictures.get(formatDateToYYYYMMDD(date))));
+  }
+
+  public dispatchHealthCheck(): Observable<void> {
+    return this.data.healthCheck().pipe(
+      tap((value) => this._healthStatus$.next(value)),
+      mapTo(null)
+    );
+  }
+
+  public dispatchApod(date: Date): Observable<void> {
+    return this.data.fetchPicture(date).pipe(
+      tap((value) => this._setApod(date, value)),
+      mapTo(null)
+    );
+  }
+
+  private _setApod(date: Date, apod: Apod): void {
+    this._pictures$.next(
+      this._pictures$.value.set(formatDateToYYYYMMDD(date), apod)
+    );
   }
 
   private log(): void {
     merge(
+      this._pictures$.asObservable(),
       this.healthStatus$.pipe(
         map((status) => `${this.data.apiInfo.api} status: ${status}`)
       )
@@ -39,6 +63,9 @@ export class StoreService {
   }
 
   private init(): void {
+    this._pictures$ = new BehaviorSubject<Map<string, Apod>>(
+      new Map<string, Apod>()
+    );
     this._healthStatus$ = new BehaviorSubject<Health>(Health.UNKNOWN);
   }
 }
