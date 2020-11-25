@@ -1,9 +1,8 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { Apod, Health, Logger, LOGGER } from '@core/model';
 import { formatDateToYYYYMMDD } from '@core/utilities';
-import { ErrorService } from '@shared/components';
 import { BehaviorSubject, merge, Observable } from 'rxjs';
-import { map, mapTo, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { DataService } from '../data';
 
 @Injectable({
@@ -12,6 +11,7 @@ import { DataService } from '../data';
 export class StoreService {
   private _healthStatus$: BehaviorSubject<Health>;
   private _pictures$: BehaviorSubject<Map<string, Apod>>;
+  private _appName: string;
 
   constructor(
     private data: DataService,
@@ -19,6 +19,10 @@ export class StoreService {
   ) {
     this.init();
     this.log();
+  }
+
+  public get appName(): string {
+    return this._appName;
   }
 
   public get healthStatus$(): Observable<Health> {
@@ -31,18 +35,16 @@ export class StoreService {
       .pipe(map((pictures) => pictures.get(formatDateToYYYYMMDD(date))));
   }
 
-  public dispatchHealthCheck(): Observable<void> {
-    return this.data.healthCheck().pipe(
-      tap((value) => this._healthStatus$.next(value)),
-      mapTo(null)
-    );
+  public dispatchHealthCheck(): Observable<Health> {
+    return this.data
+      .healthCheck()
+      .pipe(tap((value) => this._healthStatus$.next(value)));
   }
 
-  public dispatchApod(date: Date): Observable<void> {
-    return this.data.fetchPicture(date).pipe(
-      tap((value) => this._setApod(date, value)),
-      mapTo(null)
-    );
+  public dispatchApod(date: Date): Observable<Apod> {
+    return this.data
+      .fetchPicture(date)
+      .pipe(tap((value) => this._setApod(date, value)));
   }
 
   private _setApod(date: Date, apod: Apod): void {
@@ -63,6 +65,7 @@ export class StoreService {
   }
 
   private init(): void {
+    this._appName = 'Astronomic Picture Of The Day';
     this._pictures$ = new BehaviorSubject<Map<string, Apod>>(
       new Map<string, Apod>()
     );

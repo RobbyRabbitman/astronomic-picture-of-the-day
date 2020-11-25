@@ -1,0 +1,8 @@
+<img
+  (load)="_loading = false"
+  (loadstart)="_loading = true"
+  [src]="src"
+  [alt]="alt"
+  [title]="title"
+/>
+<mat-spinner *ngIf="_loading" color="primary"></mat-spinner>

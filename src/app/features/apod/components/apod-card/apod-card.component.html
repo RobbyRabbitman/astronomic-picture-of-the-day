@@ -1,0 +1,15 @@
+<mat-card *ngIf="apod">
+  <mat-card-header>
+    <mat-card-title>
+      {{ apod.title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ apod.date | date }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <app-image id="picture" [src]="apod.url" [title]="_buildImageTitle(apod)">
+    </app-image>
+    <p>{{ apod.explanation }}</p>
+  </mat-card-content>
+</mat-card>
