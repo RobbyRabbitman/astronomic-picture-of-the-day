@@ -5,11 +5,12 @@ import {
   Optional,
   ViewEncapsulation,
 } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apod, LOGGER, Logger } from '@core/model';
-import { StoreService } from '@core/services/store/store.service';
+import { StoreService } from '@core/services';
 import { formatDateToYYYYMMDD } from '@core/utilities';
 import { APOD_DATE_QUERY_PARAM } from '@features/apod/routes/routes';
 import { ErrorService } from '@shared/components';
@@ -20,6 +21,7 @@ import {
   map,
   mapTo,
   pluck,
+  share,
   switchMap,
   switchMapTo,
   tap,
@@ -46,6 +48,7 @@ const FORMATS: MatDateFormats = {
 })
 export class ApodComponent implements OnInit {
   private _apod$: Observable<Apod>;
+  private _small$: Observable<boolean>;
   private _dateControl: FormControl;
   public readonly readonlyTextInput: boolean = true;
 
@@ -54,6 +57,7 @@ export class ApodComponent implements OnInit {
     private router: Router,
     public store: StoreService,
     private errorService: ErrorService,
+    private layout: BreakpointObserver,
     @Inject(LOGGER) @Optional() private logger: Logger
   ) {}
 
@@ -65,7 +69,17 @@ export class ApodComponent implements OnInit {
     return this._dateControl;
   }
 
+  public get small$(): Observable<boolean> {
+    return this._small$;
+  }
+
   public ngOnInit(): void {
+    this._small$ = this.layout
+      .observe([Breakpoints.XSmall, Breakpoints.XSmall])
+      .pipe(
+        map((state) => state.matches),
+        share()
+      );
     this._dateControl = new FormControl(null, [Validators.required]);
     this._dateControl.valueChanges
       .pipe(

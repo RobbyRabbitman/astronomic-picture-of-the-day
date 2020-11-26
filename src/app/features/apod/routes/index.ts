@@ -1,2 +1,2 @@
 export { ApodRoutingModule } from './routing.module';
-//export * from './routes';
+export * from './routes';

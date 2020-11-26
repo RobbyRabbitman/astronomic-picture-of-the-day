@@ -12,6 +12,7 @@ export class StoreService {
   private _healthStatus$: BehaviorSubject<Health>;
   private _pictures$: BehaviorSubject<Map<string, Apod>>;
   private _appName: string;
+  private _appNameShort: string;
 
   constructor(
     private data: DataService,
@@ -23,6 +24,10 @@ export class StoreService {
 
   public get appName(): string {
     return this._appName;
+  }
+
+  public get appNameShort(): string {
+    return this._appNameShort;
   }
 
   public get healthStatus$(): Observable<Health> {
@@ -66,6 +71,7 @@ export class StoreService {
 
   private init(): void {
     this._appName = 'Astronomic Picture Of The Day';
+    this._appNameShort = 'APOD';
     this._pictures$ = new BehaviorSubject<Map<string, Apod>>(
       new Map<string, Apod>()
     );
