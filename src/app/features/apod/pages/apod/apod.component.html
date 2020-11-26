@@ -13,8 +13,6 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <span class="flex-spacer"></span>
-    <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
   </mat-toolbar>
 </header>
 <app-apod-card [apod]="apod$ | async"></app-apod-card>
