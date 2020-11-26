@@ -1,6 +1,13 @@
+@import "variables.scss";
+
 app-apod-card {
-  #picture img {
-    max-height: 75vh;
-    object-fit: contain;
+  #content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small;
+    #picture img {
+      max-height: 75vh;
+      object-fit: contain;
+    }
   }
 }
