@@ -1,8 +1,8 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { Apod, Health, Logger, LOGGER } from '@core/model';
 import { formatDateToYYYYMMDD } from '@core/utilities';
-import { BehaviorSubject, merge, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { BehaviorSubject, merge, Observable, of } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { DataService } from '../data';
 
 @Injectable({
@@ -47,9 +47,15 @@ export class StoreService {
   }
 
   public dispatchApod(date: Date): Observable<Apod> {
-    return this.data
-      .fetchPicture(date)
-      .pipe(tap((value) => this._setApod(date, value)));
+    return this._getApod(date).pipe(
+      switchMap((apod) =>
+        apod == null
+          ? this.data
+              .fetchPicture(date)
+              .pipe(tap((value) => this._setApod(date, value)))
+          : of(apod)
+      )
+    );
   }
 
   private _setApod(date: Date, apod: Apod): void {
@@ -57,10 +63,15 @@ export class StoreService {
       this._pictures$.value.set(formatDateToYYYYMMDD(date), apod)
     );
   }
+  private _getApod(date: Date): Observable<Apod> {
+    return this._pictures$
+      .asObservable()
+      .pipe(map((pictures) => pictures.get(formatDateToYYYYMMDD(date))));
+  }
 
   private log(): void {
     merge(
-      this._pictures$.asObservable(),
+      this._pictures$.asObservable().pipe(map((pictures) => pictures.keys())),
       this.healthStatus$.pipe(
         map((status) => `${this.data.apiInfo.api} status: ${status}`)
       )
