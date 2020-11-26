@@ -71,7 +71,14 @@ export class StoreService {
 
   private log(): void {
     merge(
-      this._pictures$.asObservable().pipe(map((pictures) => pictures.keys())),
+      this._pictures$
+        .asObservable()
+        .pipe(
+          map(
+            (pictures) =>
+              `Cached pictures in ram from dates ${Array.from(pictures.keys())}`
+          )
+        ),
       this.healthStatus$.pipe(
         map((status) => `${this.data.apiInfo.api} status: ${status}`)
       )
