@@ -6,13 +6,13 @@ import { environment } from '@environment';
   providedIn: 'root',
 })
 export class ConfigService {
-  private readonly _config: Config;
+  private readonly _value: Config;
 
   constructor() {
-    this._config = environment;
+    this._value = environment;
   }
 
-  get config(): Config {
-    return this._config;
+  get value(): Config {
+    return this._value;
   }
 }

@@ -96,7 +96,7 @@ export class ApodComponent implements OnInit {
     this._apod$ = this.route.queryParams.pipe(
       pluck(APOD_DATE_QUERY_PARAM),
       tap((param) =>
-        this.logger?.trace(`${APOD_DATE_QUERY_PARAM} param: ${param}`)
+        this.logger?.trace(`${APOD_DATE_QUERY_PARAM} route param: ${param}`)
       ),
       map((param) => new Date(param)),
       switchMap((date) => {

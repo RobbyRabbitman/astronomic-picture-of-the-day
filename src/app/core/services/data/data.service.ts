@@ -5,6 +5,7 @@ import { formatDateToYYYYMMDD } from '@core/utilities';
 import { Observable, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
 import { ConfigService } from '@core/services/config';
+import { ApodParams } from '@core/model/apod/Apod';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class DataService {
   private readonly _apiInfo: ApodApiInfo;
 
   constructor(private http: HttpClient, private configService: ConfigService) {
-    this._apiInfo = configService.config.apod;
+    this._apiInfo = configService.value.apod;
   }
 
   get apiInfo(): ApodApiInfo {
@@ -22,10 +23,7 @@ export class DataService {
 
   public fetchPicture(date: Date): Observable<Apod> {
     return this.http.get<Apod>(this._apiInfo.api, {
-      params: {
-        date: formatDateToYYYYMMDD(date),
-        api_key: this._apiInfo.key,
-      },
+      params: { ...ApodParams.from({ date, apiKey: this._apiInfo.key }) },
     });
   }
 
