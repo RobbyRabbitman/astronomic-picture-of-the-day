@@ -12,14 +12,6 @@ app-apod {
     position: sticky;
     z-index: 1;
     top: 0;
-    mat-toolbar {
-      > #dateInput {
-        width: 140px;
-      }
-      > .flex-spacer {
-        flex: 1 1 auto;
-      }
-    }
     .mat-datepicker-toggle-active,
     .mat-datepicker-toggle {
       color: unset;

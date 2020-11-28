@@ -1,8 +1,10 @@
 <header>
   <mat-toolbar color="primary">
-    {{ (small$ | async) ? store.appNameShort : store.appName }}
-    <span class="flex-spacer"></span>
-    <mat-form-field id="dateInput" color="primary">
+    <span>
+      {{ (small$ | async) ? store.appNameShort : store.appName }}
+    </span>
+    <span fxFlex="1 1 auto"></span>
+    <mat-form-field fxFlex="1 1 140px" color="primary">
       <input
         autocomplete="off"
         [readonly]="readonlyTextInput"
