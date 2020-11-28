@@ -15,7 +15,7 @@
     </mat-form-field>
   </mat-toolbar>
 </header>
-<section [ngSwitch]="loading$ | async">
+<section class="page" [ngSwitch]="loading$ | async">
   <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
   <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async"></app-apod-card>
 </section>
