@@ -12,6 +12,10 @@ export const environment: Config = {
     key: 'DEMO_KEY',
   },
   logLevel: NgxLoggerLevel.TRACE,
+  github: {
+    uri: 'https://github.com/RobbyRabbitman/astronomic-picture-of-the-day',
+    title: 'Repository of this App',
+  },
 };
 
 /*

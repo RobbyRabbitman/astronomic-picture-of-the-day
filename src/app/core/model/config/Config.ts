@@ -4,6 +4,10 @@ export interface Config {
   production: boolean;
   apod: ApodApiInfo;
   logLevel: NgxLoggerLevel;
+  github: {
+    uri: string;
+    title: string;
+  };
 }
 
 export interface ApodApiInfo {
