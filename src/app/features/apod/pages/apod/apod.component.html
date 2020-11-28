@@ -4,7 +4,25 @@
       {{ (small$ | async) ? store.appNameShort : store.appName }}
     </span>
     <span fxFlex="1 1 auto"></span>
-    <mat-form-field fxFlex="1 1 140px" color="primary">
+  </mat-toolbar>
+</header>
+<section fxLayout="row" class="content" fxLayoutAlign="center">
+  <div [ngSwitch]="loading$ | async" fxFlex="0 1 600px">
+    <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
+    <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async">
+    </app-apod-card>
+  </div>
+</section>
+<footer>
+  <mat-toolbar fxLayoutAlign="center center" fxLayoutGap="1rem" color="accent">
+    <button
+      *ngIf="backward$ | async as backward"
+      (click)="next(backward)"
+      mat-icon-button
+    >
+      <mat-icon [inline]="true">navigate_before</mat-icon>
+    </button>
+    <mat-form-field fxFlex="1 1 140px">
       <input
         autocomplete="off"
         [readonly]="readonlyTextInput"
@@ -15,42 +33,12 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  </mat-toolbar>
-</header>
-<section fxLayout="row" fxLayoutGap="1rem" class="page" fxLayoutAlign="center">
-  <aside
-    class="navigate-container"
-    fxFlex="0 1 200px"
-    fxLayoutAlign="center center"
-    fxLayout="column"
-  >
-    <button
-      *ngIf="backward$ | async as backward"
-      (click)="next(backward)"
-      mat-icon-button
-      color="accent"
-    >
-      <mat-icon [inline]="true">navigate_before</mat-icon>
-    </button>
-  </aside>
-  <div [ngSwitch]="loading$ | async" fxFlex="0 1 600px">
-    <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
-    <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async">
-    </app-apod-card>
-  </div>
-  <aside
-    class="navigate-container"
-    fxFlex="0 1 200px"
-    fxLayoutAlign="center center"
-    fxLayout="column"
-  >
     <button
       *ngIf="forward$ | async as forward"
       (click)="next(forward)"
       mat-icon-button
-      color="accent"
     >
       <mat-icon [inline]="true">navigate_next</mat-icon>
     </button>
-  </aside>
-</section>
+  </mat-toolbar>
+</footer>

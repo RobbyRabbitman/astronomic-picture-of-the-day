@@ -96,10 +96,7 @@ export class ApodComponent implements OnInit {
 
     this._small$ = this.layout
       .observe([Breakpoints.XSmall, Breakpoints.XSmall])
-      .pipe(
-        map((state) => state.matches),
-        share()
-      );
+      .pipe(map((state) => state.matches));
     this._dateControl = new FormControl(null, [Validators.required]);
     this._dateControl.valueChanges
       .pipe(

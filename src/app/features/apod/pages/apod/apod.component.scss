@@ -8,25 +8,28 @@ app-apod {
   right: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   header {
     position: sticky;
     z-index: 1;
     top: 0;
-    .mat-datepicker-toggle-active,
-    .mat-datepicker-toggle {
-      color: unset;
-    }
+  }
+  .mat-datepicker-toggle-active,
+  .mat-datepicker-toggle {
+    color: unset;
   }
 
-  .navigate-container {
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    .mat-icon-button {
-      @include mat-icon-button-size(100px);
-    }
-  }
-  .page {
+  .content {
     overflow: auto;
+    height: 100%;
+  }
+
+  app-apod-card {
+    display: block;
+    padding: $spacing-small;
+  }
+
+  .mat-icon-button {
+    @include mat-icon-button-size(50px);
   }
 }
