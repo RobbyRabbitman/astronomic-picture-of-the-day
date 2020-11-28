@@ -10,4 +10,5 @@ export class ImageComponent {
   @Input() alt: string;
   @Input() title: string;
   public _loading: boolean = false;
+  public _minDimension: number = 50;
 }

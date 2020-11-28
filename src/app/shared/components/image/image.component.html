@@ -4,10 +4,12 @@
   [src]="src"
   [alt]="alt"
   [title]="title"
+  [style.minWidth.px]="_minDimension"
+  [style.minHeight.px]="_minDimension"
 />
 <mat-spinner
   [strokeWidth]="5"
-  [diameter]="50"
+  [diameter]="_minDimension"
   class="center-abs-xy"
   *ngIf="_loading && src"
   color="accent"
