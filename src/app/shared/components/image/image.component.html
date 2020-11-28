@@ -5,4 +5,8 @@
   [alt]="alt"
   [title]="title"
 />
-<mat-spinner *ngIf="_loading" color="primary"></mat-spinner>
+<mat-spinner
+  class="center-abs-xy"
+  *ngIf="_loading && src"
+  color="primary"
+></mat-spinner>
