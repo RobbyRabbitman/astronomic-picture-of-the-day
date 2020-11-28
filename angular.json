@@ -33,7 +33,11 @@
               "src/styles/global/global.scss",
               "src/styles/theme/theme.scss"
             ],
-            "stylePreprocessorOptions": {"includePaths": ["src/styles/variables"]},
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles/variables"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -124,6 +128,10 @@
               "devServerTarget": "astronomy-picture-of-the-day:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
