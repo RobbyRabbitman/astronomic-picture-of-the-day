@@ -4,14 +4,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LOGGER } from '@core/model';
 import { environment } from '@environment';
 import { NGXLogger, LoggerModule } from 'ngx-logger';
-import { StoreService } from './services/store/store.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApodService } from './interceptors';
 import { GITHUB_URI, GITHUB_URI_TITLE } from '@shared/components';
 import { MatIconRegistry } from '@angular/material/icon';
 
 const CUSTOM_ICONS = new Map<string, string>([
-  ['github', '/assets/icons/github.svg'],
+  ['github', 'assets/icons/github.svg'],
 ]);
 
 @NgModule({
