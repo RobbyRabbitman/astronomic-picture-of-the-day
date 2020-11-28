@@ -131,7 +131,9 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref":"/astronomic-picture-of-the-day/"
+          }
         }
       }
     }
