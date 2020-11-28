@@ -136,9 +136,12 @@ export class ApodComponent implements OnInit {
         switchMap((date) =>
           this.store.dispatchApod(date).pipe(
             tap((_) => this._loading$.next(false)),
-            catchError((error) =>
-              this.errorService.showErrorInDialog(error).pipe(mapTo(null))
-            )
+            catchError((error) => {
+              this._loading$.next(false);
+              return this.errorService
+                .showErrorInDialog(error)
+                .pipe(mapTo(null));
+            })
           )
         )
       )
