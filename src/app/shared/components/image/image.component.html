@@ -6,7 +6,10 @@
   [title]="title"
 />
 <mat-spinner
+  [strokeWidth]="5"
+  [diameter]="50"
   class="center-abs-xy"
   *ngIf="_loading && src"
-  color="primary"
-></mat-spinner>
+  color="accent"
+>
+</mat-spinner>
