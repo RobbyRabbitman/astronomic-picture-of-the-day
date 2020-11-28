@@ -1,5 +1,15 @@
-<div class="container" fxLayout="column">
-  <div class="content" fxFlex="1 1 auto">
-    <router-outlet></router-outlet>
-  </div>
+<div fxLayout="column" class="container">
+  <header>
+    <mat-toolbar color="primary">
+      <button mat-flat-button color="primary" routerLink="/">
+        {{ (small$ | async) ? store.appNameShort : store.appName }}
+      </button>
+      <span fxFlex="1 1 auto"></span>
+    </mat-toolbar>
+  </header>
+  <mat-sidenav-container fxFlex="1 1 auto">
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

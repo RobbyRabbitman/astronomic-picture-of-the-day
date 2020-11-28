@@ -10,10 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   exports: [
     MatDialogModule,
+    MatSidenavModule,
     MatInputModule,
+    MatTooltipModule,
     MatToolbarModule,
     MatDatepickerModule,
     MatFormFieldModule,

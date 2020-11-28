@@ -1,13 +1,5 @@
-<header>
-  <mat-toolbar color="primary">
-    <span>
-      {{ (small$ | async) ? store.appNameShort : store.appName }}
-    </span>
-    <span fxFlex="1 1 auto"></span>
-  </mat-toolbar>
-</header>
-<section fxLayout="row" class="content" fxLayoutAlign="center">
-  <div [ngSwitch]="loading$ | async" fxFlex="0 1 600px">
+<section fxLayout="column" class="content" fxLayoutAlign="center center">
+  <div class="apod-container" [ngSwitch]="loading$ | async">
     <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
     <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async">
     </app-apod-card>

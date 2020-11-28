@@ -1,35 +1,25 @@
 @import "variables.scss";
 
 app-apod {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  header {
-    position: sticky;
-    z-index: 1;
-    top: 0;
-  }
   .mat-datepicker-toggle-active,
   .mat-datepicker-toggle {
     color: unset;
   }
-
-  .content {
-    overflow: auto;
-    height: 100%;
-  }
-
-  app-apod-card {
-    display: block;
-    padding: $spacing-small;
-  }
-
   .mat-icon-button {
     @include mat-icon-button-size(50px);
+  }
+  .apod-container {
+    max-width: 600px;
+  }
+  footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden; // idk, something overflows
+  }
+  .content {
+    min-height: 100%;
+    padding: $spacing-small;
   }
 }
