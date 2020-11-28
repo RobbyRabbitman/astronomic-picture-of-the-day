@@ -1,2 +1,15 @@
 $spacing-small: 1rem;
 $spacing: 2rem;
+
+@mixin mat-icon-button-size($size: 40px) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+
+  .mat-icon {
+    font-size: $size;
+    width: $size;
+    height: $size;
+    line-height: $size;
+  }
+}

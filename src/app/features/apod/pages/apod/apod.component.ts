@@ -48,6 +48,8 @@ const FORMATS: MatDateFormats = {
 })
 export class ApodComponent implements OnInit {
   private _apod$: BehaviorSubject<Apod>;
+  private _forward$: BehaviorSubject<Date>;
+  private _backward$: BehaviorSubject<Date>;
   private _small$: Observable<boolean>;
   private _dateControl: FormControl;
   private _loading$: BehaviorSubject<boolean>;
@@ -78,8 +80,18 @@ export class ApodComponent implements OnInit {
     return this._loading$.asObservable();
   }
 
+  public get backward$(): Observable<Date> {
+    return this._backward$.asObservable().pipe(filter((x) => x != null));
+  }
+
+  public get forward$(): Observable<Date> {
+    return this._forward$.asObservable().pipe(filter((x) => x != null));
+  }
+
   public ngOnInit(): void {
     this._apod$ = new BehaviorSubject<Apod>(null);
+    this._forward$ = new BehaviorSubject<Date>(null);
+    this._backward$ = new BehaviorSubject<Date>(null);
     this._loading$ = new BehaviorSubject<boolean>(false);
 
     this._small$ = this.layout
@@ -99,7 +111,7 @@ export class ApodComponent implements OnInit {
           )
         )
       )
-      .subscribe({ next: (date) => this._updateDateQueryParam(date) });
+      .subscribe({ next: (date) => this.next(date) });
 
     this.route.queryParams
       .pipe(
@@ -112,12 +124,18 @@ export class ApodComponent implements OnInit {
         map((param) => new Date(param)),
         switchMap((date) => {
           if (isNaN(date.getTime())) {
-            return from(this._updateDateQueryParam(new Date())).pipe(
-              switchMapTo(EMPTY)
-            );
+            return from(this.next(new Date())).pipe(switchMapTo(EMPTY));
           } else return of(date);
         }),
         tap((date) => this._dateControl.setValue(date, { emitEvent: false })),
+        tap((date) => {
+          this._forward$.next(
+            new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
+          );
+          this._backward$.next(
+            new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1)
+          );
+        }),
         switchMap((date) =>
           this.store.dispatchApod(date).pipe(
             tap((_) => this._loading$.next(false)),
@@ -130,7 +148,7 @@ export class ApodComponent implements OnInit {
       .subscribe({ next: (apod) => this._apod$.next(apod) });
   }
 
-  private async _updateDateQueryParam(value: Date): Promise<boolean> {
+  public async next(value: Date): Promise<boolean> {
     return this.router.navigate([], {
       queryParams: {
         [APOD_DATE_QUERY_PARAM]: formatDateToYYYYMMDD(value),

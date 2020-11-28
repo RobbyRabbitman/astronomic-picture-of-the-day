@@ -15,14 +15,40 @@
     </mat-form-field>
   </mat-toolbar>
 </header>
-<section fxLayout="row" class="page" [ngSwitch]="loading$ | async">
-  <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
-  <span fxFlex="1 1 auto"></span>
-  <app-apod-card
-    fxFlex="0 1 600px"
-    *ngSwitchCase="false"
-    [apod]="apod$ | async"
+<section fxLayout="row" fxLayoutGap="1rem" class="page" fxLayoutAlign="center">
+  <aside
+    class="navigate-container"
+    fxFlex="0 1 200px"
+    fxLayoutAlign="center center"
+    fxLayout="column"
   >
-  </app-apod-card>
-  <span fxFlex="1 1 auto"></span>
+    <button
+      *ngIf="backward$ | async as backward"
+      (click)="next(backward)"
+      mat-icon-button
+      color="accent"
+    >
+      <mat-icon [inline]="true">navigate_before</mat-icon>
+    </button>
+  </aside>
+  <div [ngSwitch]="loading$ | async" fxFlex="0 1 600px">
+    <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
+    <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async">
+    </app-apod-card>
+  </div>
+  <aside
+    class="navigate-container"
+    fxFlex="0 1 200px"
+    fxLayoutAlign="center center"
+    fxLayout="column"
+  >
+    <button
+      *ngIf="forward$ | async as forward"
+      (click)="next(forward)"
+      mat-icon-button
+      color="accent"
+    >
+      <mat-icon [inline]="true">navigate_next</mat-icon>
+    </button>
+  </aside>
 </section>

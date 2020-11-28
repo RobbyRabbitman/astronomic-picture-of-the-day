@@ -1,4 +1,13 @@
+@import "variables.scss";
+
 app-apod {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
   header {
     position: sticky;
     z-index: 1;
@@ -15,5 +24,17 @@ app-apod {
     .mat-datepicker-toggle {
       color: unset;
     }
+  }
+
+  .navigate-container {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    .mat-icon-button {
+      @include mat-icon-button-size(100px);
+    }
+  }
+  .page {
+    overflow: auto;
   }
 }
