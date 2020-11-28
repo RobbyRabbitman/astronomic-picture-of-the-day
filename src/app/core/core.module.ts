@@ -7,7 +7,6 @@ import { NGXLogger, LoggerModule } from 'ngx-logger';
 import { StoreService } from './services/store/store.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApodService } from './interceptors';
-
 @NgModule({
   imports: [
     BrowserModule,

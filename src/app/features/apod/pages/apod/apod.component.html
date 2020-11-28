@@ -15,7 +15,14 @@
     </mat-form-field>
   </mat-toolbar>
 </header>
-<section class="page" [ngSwitch]="loading$ | async">
+<section fxLayout="row" class="page" [ngSwitch]="loading$ | async">
   <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
-  <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async"></app-apod-card>
+  <span fxFlex="1 1 auto"></span>
+  <app-apod-card
+    fxFlex="0 1 600px"
+    *ngSwitchCase="false"
+    [apod]="apod$ | async"
+  >
+  </app-apod-card>
+  <span fxFlex="1 1 auto"></span>
 </section>
