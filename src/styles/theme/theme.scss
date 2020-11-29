@@ -3,19 +3,36 @@
 
 @include mat-core();
 
-$astronomy-picture-of-the-day-primary: mat-palette($mat-indigo);
-$astronomy-picture-of-the-day-accent: mat-palette($mat-pink, A200, A100, A400);
-$astronomy-picture-of-the-day-warn: mat-palette($mat-red);
+$apod-primary: mat-palette($mat-indigo);
+$apod-accent: mat-palette($mat-pink, A200, A100, A400);
+$apod-warn: mat-palette($mat-red);
 
-$astronomy-picture-of-the-day-theme: mat-light-theme(
+$apod-theme-light: mat-light-theme(
   (
     color: (
-      primary: $astronomy-picture-of-the-day-primary,
-      accent: $astronomy-picture-of-the-day-accent,
-      warn: $astronomy-picture-of-the-day-warn,
+      primary: $apod-primary,
+      accent: $apod-accent,
+      warn: $apod-warn,
     ),
   )
 );
 
-@include angular-material-theme($astronomy-picture-of-the-day-theme);
-@include app-components-theme($astronomy-picture-of-the-day-theme);
+$apod-theme-dark: mat-dark-theme(
+  (
+    color: (
+      primary: $apod-primary,
+      accent: $apod-accent,
+      warn: $apod-warn,
+    ),
+  )
+);
+
+.light {
+  @include angular-material-theme($apod-theme-light);
+  @include app-components-theme($apod-theme-light);
+}
+
+.dark {
+  @include angular-material-theme($apod-theme-dark);
+  @include app-components-theme($apod-theme-dark);
+}

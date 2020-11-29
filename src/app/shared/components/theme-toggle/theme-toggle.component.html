@@ -1,0 +1,10 @@
+<ng-container *ngIf="themeItem$ | async as themeItem">
+  <button
+    (click)="next(themeItem.theme)"
+    mat-icon-button
+    [color]="color"
+    [matTooltip]="themeItem.description"
+  >
+    <mat-icon>{{ themeItem.icon }}</mat-icon>
+  </button>
+</ng-container>

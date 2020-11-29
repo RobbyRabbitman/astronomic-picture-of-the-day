@@ -1,2 +1,5 @@
-@mixin app-components-theme($spacex-explorer-theme) {
+@import "../../app/features/apod/pages/apod/apod.component.scss-theme.scss";
+
+@mixin app-components-theme($theme) {
+  @include app-apod-theme($theme);
 }

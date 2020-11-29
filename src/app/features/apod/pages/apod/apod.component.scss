@@ -1,10 +1,6 @@
 @import "variables.scss";
 
 app-apod {
-  .mat-datepicker-toggle-active,
-  .mat-datepicker-toggle {
-    color: unset;
-  }
   .mat-icon-button {
     @include mat-icon-button-size(50px);
   }

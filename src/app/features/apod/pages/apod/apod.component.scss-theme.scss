@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+@mixin app-apod-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  .mat-datepicker-toggle-active,
+  .mat-datepicker-toggle {
+    color: mat-color($accent, default-contrast) !important;
+  }
+}
