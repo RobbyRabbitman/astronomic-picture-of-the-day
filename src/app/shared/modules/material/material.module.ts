@@ -12,10 +12,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   exports: [
     MatDialogModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatInputModule,
     MatTooltipModule,
     MatToolbarModule,

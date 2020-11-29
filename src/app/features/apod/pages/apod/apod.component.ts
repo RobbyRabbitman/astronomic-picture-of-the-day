@@ -26,6 +26,7 @@ import {
   switchMapTo,
   tap,
 } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 const FORMATS: MatDateFormats = {
   parse: {
@@ -132,14 +133,34 @@ export class ApodComponent implements OnInit {
             new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1)
           );
         }),
-        switchMap((date) =>
+        switchMap<Date, Observable<Apod>>((date) =>
           this.store.dispatchApod(date).pipe(
             tap((_) => this._loading$.next(false)),
-            catchError((error) => {
+            catchError((caught: HttpErrorResponse) => {
               this._loading$.next(false);
-              return this.errorService
-                .showErrorInDialog(error)
-                .pipe(mapTo(null));
+              let error: Error;
+              switch (caught.status) {
+                case 400:
+                  error = {
+                    message: `No image for ${date.toLocaleDateString()} yet ${String.fromCodePoint(
+                      0x1f622
+                    )}`,
+                    name: caught.statusText,
+                  };
+                  break;
+                case 429:
+                  error = {
+                    message: `This site requests data from Nasa, which is rate limited ${String.fromCodePoint(
+                      0x1f622
+                    )}`,
+                    name: caught.statusText,
+                  };
+                  break;
+              }
+              return this.errorService.showErrorInDialog(error).pipe(
+                tap((_) => this.next(new Date())),
+                mapTo(null)
+              );
             })
           )
         )
