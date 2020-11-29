@@ -17,7 +17,7 @@ export class ThemeService {
     @Inject(DOCUMENT) private document: Document
   ) {
     this._theme$ = new BehaviorSubject<Theme>(
-      this.localStorage.read<Theme>(this.KEY) || Theme.LIGHT
+      this.localStorage.read<Theme>(this.KEY) || Theme.DARK
     );
     this.document.body.classList.add(this._theme$.value);
     this.theme$
