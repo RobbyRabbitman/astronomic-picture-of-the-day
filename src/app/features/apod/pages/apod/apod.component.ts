@@ -43,7 +43,6 @@ const FORMATS: MatDateFormats = {
   selector: 'app-apod',
   templateUrl: './apod.component.html',
   styleUrls: ['./apod.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   providers: [{ provide: MAT_DATE_FORMATS, useValue: FORMATS }], // doesnt work :(
 })
 export class ApodComponent implements OnInit {
