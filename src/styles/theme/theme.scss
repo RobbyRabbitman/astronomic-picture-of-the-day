@@ -4,7 +4,7 @@
 @include mat-core();
 
 $apod-primary: mat-palette($mat-indigo);
-$apod-accent: mat-palette($mat-pink, A200, A100, A400);
+$apod-accent: mat-palette($mat-red, A400, A100, A400);
 $apod-warn: mat-palette($mat-red);
 
 $apod-theme-light: mat-light-theme(
