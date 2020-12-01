@@ -1,6 +1,10 @@
 <section fxLayout="column" class="content" fxLayoutAlign="center center">
   <div class="apod-container" [ngSwitch]="loading$ | async">
-    <mat-spinner class="center-abs-xy" *ngSwitchCase="true"></mat-spinner>
+    <mat-spinner
+      color="accent"
+      class="center-abs-xy"
+      *ngSwitchCase="true"
+    ></mat-spinner>
     <app-apod-card *ngSwitchCase="false" [apod]="apod$ | async">
     </app-apod-card>
   </div>
