@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { formatDateToYYYYMMDD } from '@core/utilities';
 
+// TODO Object oriented?
 export interface Apod {
   title: string;
   date: string;

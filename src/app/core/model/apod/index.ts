@@ -1,1 +1,1 @@
-export { Apod } from './Apod';
+export { Apod, ApodParams } from './Apod';

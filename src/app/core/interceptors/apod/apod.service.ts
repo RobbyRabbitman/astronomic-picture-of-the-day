@@ -7,8 +7,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
-import { LOGGER, Logger } from '@core/model';
-import { Apod, ApodParams } from '@core/model/apod/Apod';
+import { LOGGER, Logger, Apod, ApodParams } from '@core/model';
 import { ConfigService, LocalStorageService } from '@core/services';
 import { Observable, of } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
