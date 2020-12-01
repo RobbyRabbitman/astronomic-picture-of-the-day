@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
-import { ShellComponent } from './shell.component';
 import { SharedModule } from '@shared/shared.module';
+import {
+  AboutComponent,
+  DialogComponent,
+  ShellComponent,
+} from '@features/shell/components';
 
 @NgModule({
-  declarations: [ShellComponent],
+  declarations: [ShellComponent, AboutComponent, DialogComponent],
   imports: [SharedModule],
   exports: [ShellComponent],
 })
