@@ -1,21 +1,22 @@
 @import "variables.scss";
 
-.apod-container {
-  max-width: 600px;
-}
-
-footer {
-  position: sticky;
+:host > .page {
+  position: absolute;
+  top: 0;
   bottom: 0;
-  z-index: 1;
-  width: 100%;
-  overflow: hidden; // idk, something overflows
-  .mat-icon-button {
-    @include mat-icon-button-size(50px);
+  left: 0;
+  right: 0;
+  > .content {
+    overflow: auto;
+    padding: $spacing-small;
+    > .apod-card {
+      max-width: 960px;
+    }
   }
-}
-
-.content {
-  min-height: 100%;
-  padding: $spacing-small;
+  > footer {
+    overflow: hidden; // idk, something overflows
+    .mat-icon-button {
+      @include mat-icon-button-size(50px);
+    }
+  }
 }
