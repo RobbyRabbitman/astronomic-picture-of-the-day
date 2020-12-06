@@ -10,9 +10,10 @@
     overflow: auto;
     > .content {
       padding: $spacing-small;
-    }
-    > .apod-card {
-      max-width: 960px;
+      > .apod-card {
+        display: block;
+        max-width: 960px;
+      }
     }
   }
   > footer {
