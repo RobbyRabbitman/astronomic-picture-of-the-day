@@ -25,6 +25,7 @@ const CUSTOM_ICONS = new Map<string, string>([
   exports: [BrowserModule, BrowserAnimationsModule],
   providers: [
     { provide: LOGGER, useClass: NGXLogger },
+    // Control order of interceptors! Flow: Request: A -> B -> C, Response: C -> B -> A
     {
       provide: HTTP_INTERCEPTORS,
       multi: true,
