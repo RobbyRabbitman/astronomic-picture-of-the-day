@@ -7,7 +7,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
-import { LOGGER, Logger, Apod, ApodParams } from '@core/model';
+import { LOGGER, Logger, ApodResponse, ApodParams } from '@core/model';
 import { ConfigService, LocalStorageService } from '@core/services';
 import { Observable, of } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
@@ -15,7 +15,7 @@ import { filter, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class ApodService implements HttpInterceptor {
+export class CacheInterceptor implements HttpInterceptor {
   constructor(
     private localStorage: LocalStorageService,
     private config: ConfigService,
@@ -29,15 +29,19 @@ export class ApodService implements HttpInterceptor {
     if (req.url === this.config.value.apod.api) {
       try {
         const params = ApodParams.from(req.params);
-        const cachedApod = this.localStorage.read<Apod>(params.date);
-        if (cachedApod) {
+        const cachedApod = this.localStorage.read<ApodResponse>(params.date);
+        if (cachedApod)
           return of(
-            new HttpResponse<Apod>({ body: cachedApod, status: 200 })
+            new HttpResponse<ApodResponse>({
+              ...req,
+              body: cachedApod,
+              status: 200,
+            })
           );
-        } else
+        else
           return next.handle(req).pipe(
             filter((res) => res.type === HttpEventType.Response),
-            tap((res: HttpResponse<Apod>) =>
+            tap((res: HttpResponse<ApodResponse>) =>
               this.localStorage.write(params.date, res.body)
             )
           );

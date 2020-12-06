@@ -8,8 +8,20 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content id="content">
-    <app-image id="picture" [src]="apod.url" [title]="_buildImageTitle(apod)">
-    </app-image>
+    <ng-container [ngSwitch]="apod.media_type">
+      <app-image
+        *ngSwitchCase="'image'"
+        id="picture"
+        [src]="apod.url"
+        [title]="apod.imageTitle"
+      >
+      </app-image>
+      <app-youtube-player
+        *ngSwitchCase="'video'"
+        [videoId]="apod.youtubeVideoId"
+      >
+      </app-youtube-player>
+    </ng-container>
     <p>{{ apod.explanation }}</p>
   </mat-card-content>
 </mat-card>

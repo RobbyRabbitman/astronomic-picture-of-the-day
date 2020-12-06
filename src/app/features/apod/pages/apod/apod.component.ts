@@ -1,10 +1,4 @@
-import {
-  Component,
-  Inject,
-  OnInit,
-  Optional,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -21,7 +15,6 @@ import {
   map,
   mapTo,
   pluck,
-  share,
   switchMap,
   switchMapTo,
   tap,

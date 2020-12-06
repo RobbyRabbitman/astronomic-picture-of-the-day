@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Apod, Health, Logger, LOGGER } from '@core/model';
+import { Apod, ApodResponse, Health, Logger, LOGGER } from '@core/model';
 import { formatDateToYYYYMMDD } from '@core/utilities';
 import { BehaviorSubject, merge, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';

@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Apod, ApodApiInfo, Health } from '@core/model';
-import { formatDateToYYYYMMDD } from '@core/utilities';
+import { ApodResponse, ApodApiInfo, Health } from '@core/model';
 import { Observable, of } from 'rxjs';
 import { catchError, mapTo } from 'rxjs/operators';
 import { ConfigService } from '@core/services/config';
-import { ApodParams } from '@core/model/apod/Apod';
+import { Apod, ApodParams } from '@core/model/apod/Apod';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +12,7 @@ import { ApodParams } from '@core/model/apod/Apod';
 export class DataService {
   private readonly _apiInfo: ApodApiInfo;
 
-  constructor(private http: HttpClient, private configService: ConfigService) {
+  constructor(private http: HttpClient, configService: ConfigService) {
     this._apiInfo = configService.value.apod;
   }
 

@@ -1,1 +1,2 @@
-export { ApodService } from './apod.service';
+export { CacheInterceptor } from './cache.service';
+export { ApodFactoryInterceptor } from './factory.service';

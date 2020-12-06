@@ -1,1 +1,1 @@
-export { Apod, ApodParams } from './Apod';
+export { ApodResponse, Apod, ApodParams } from './Apod';

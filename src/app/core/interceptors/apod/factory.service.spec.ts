@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApodService } from './apod.service';
+import { ApodFactoryInterceptor } from './factory.service';
 
-describe('ApodService', () => {
-  let service: ApodService;
+describe('FactoryService', () => {
+  let service: ApodFactoryInterceptor;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ApodService);
+    service = TestBed.inject(ApodFactoryInterceptor);
   });
 
   it('should be created', () => {

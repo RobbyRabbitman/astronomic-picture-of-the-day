@@ -6,9 +6,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  > .content {
+  > .content-container {
     overflow: auto;
-    padding: $spacing-small;
+    > .content {
+      padding: $spacing-small;
+    }
     > .apod-card {
       max-width: 960px;
     }

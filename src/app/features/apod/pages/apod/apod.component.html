@@ -1,21 +1,23 @@
 <section class="page" fxLayout="column">
-  <section
+  <div
     fxFlex="1 1 auto"
-    class="content"
+    class="content-container"
     fxLayout="column"
     fxLayoutAlign="start center"
   >
-    <ng-container [ngSwitch]="loading$ | async">
-      <mat-spinner color="accent" class="center-abs-xy" *ngSwitchCase="true">
-      </mat-spinner>
-      <app-apod-card
-        class="apod-card"
-        *ngSwitchCase="false"
-        [apod]="apod$ | async"
-      >
-      </app-apod-card>
-    </ng-container>
-  </section>
+    <section class="content">
+      <ng-container [ngSwitch]="loading$ | async">
+        <mat-spinner color="accent" class="center-abs-xy" *ngSwitchCase="true">
+        </mat-spinner>
+        <app-apod-card
+          class="apod-card"
+          *ngSwitchCase="false"
+          [apod]="apod$ | async"
+        >
+        </app-apod-card>
+      </ng-container>
+    </section>
+  </div>
   <footer fxFlex="0 0 auto">
     <mat-toolbar
       fxLayoutAlign="center center"
