@@ -99,8 +99,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/global/global.scss",
+              "src/styles/theme/theme.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles/variables"
+              ]
+            },
             "scripts": []
           }
         },
