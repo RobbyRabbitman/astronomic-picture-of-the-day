@@ -6,7 +6,7 @@ app-apod-card {
     flex-direction: column;
     gap: $spacing-small;
     #picture img {
-      max-height: 75vh;
+      max-height: 50vh;
       object-fit: contain;
     }
   }
