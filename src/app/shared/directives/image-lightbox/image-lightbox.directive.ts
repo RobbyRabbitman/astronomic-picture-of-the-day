@@ -1,5 +1,6 @@
 import {
   Directive,
+  ElementRef,
   HostListener,
   Inject,
   Input,
@@ -23,12 +24,23 @@ export class ImageLightboxDirective {
   @Input() public title: string;
 
   constructor(
+    private el: ElementRef,
     private dialog: MatDialog,
     @Inject(LOGGER) @Optional() private logger: Logger
   ) {}
 
   @HostListener('click')
   onClick = this.open;
+
+  @HostListener('mouseenter')
+  onMouseEnter = () => this.cursor('pointer');
+
+  @HostListener('mouseleave')
+  onMouseLeave = () => this.cursor('initial');
+
+  private cursor(cursor: 'pointer' | 'initial') {
+    this.el.nativeElement.style.cursor = cursor;
+  }
 
   public open(): Observable<void> {
     this.logger?.trace(
