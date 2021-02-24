@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1614207096199,
+  "timestamp": 1614208217577,
   "index": "/astronomic-picture-of-the-day/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/astronomic-picture-of-the-day/4.6965eed02d72c121a489.js",
         "/astronomic-picture-of-the-day/index.html",
-        "/astronomic-picture-of-the-day/main.8b808f092313d5ac784a.js",
+        "/astronomic-picture-of-the-day/main.ec988ccc0f39741383c1.js",
         "/astronomic-picture-of-the-day/manifest.webmanifest",
         "/astronomic-picture-of-the-day/polyfills.bf99d438b005d57b2b31.js",
         "/astronomic-picture-of-the-day/runtime.45dbdb3aa8f3d7f1da03.js",
-        "/astronomic-picture-of-the-day/styles.76c57a306b5b87ba5897.css"
+        "/astronomic-picture-of-the-day/styles.82366585ebe4b5df838b.css"
       ],
       "patterns": []
     },
@@ -54,12 +54,12 @@
     "/astronomic-picture-of-the-day/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/astronomic-picture-of-the-day/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/astronomic-picture-of-the-day/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "/astronomic-picture-of-the-day/index.html": "f8df20d8970d3bf1132f8d613c2ed1fb75176eeb",
-    "/astronomic-picture-of-the-day/main.8b808f092313d5ac784a.js": "5d862fc390b977839c14c99a5a0930f7544993f1",
+    "/astronomic-picture-of-the-day/index.html": "5765372bbcf62d100fa0b8929128fc444fce8260",
+    "/astronomic-picture-of-the-day/main.ec988ccc0f39741383c1.js": "5d862fc390b977839c14c99a5a0930f7544993f1",
     "/astronomic-picture-of-the-day/manifest.webmanifest": "06bfa881c35c700d661eaf5173ade291e15f12af",
     "/astronomic-picture-of-the-day/polyfills.bf99d438b005d57b2b31.js": "763cd3b34dfa4600ebb9d9588ec7116988e98920",
     "/astronomic-picture-of-the-day/runtime.45dbdb3aa8f3d7f1da03.js": "cd570942e34349f6a8bdb282708c5b36349a6148",
-    "/astronomic-picture-of-the-day/styles.76c57a306b5b87ba5897.css": "f4efcd2833a9793af61109a9c950a750b4be3caf"
+    "/astronomic-picture-of-the-day/styles.82366585ebe4b5df838b.css": "e38a51054ca6a76c9a56f8e6c551994f1d4eb612"
   },
   "navigationUrls": [
     {
