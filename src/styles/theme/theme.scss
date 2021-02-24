@@ -27,12 +27,9 @@ $apod-theme-dark: mat-dark-theme(
   )
 );
 
-.light {
-  @include angular-material-theme($apod-theme-light);
-  @include app-components-theme($apod-theme-light);
-}
+@include angular-material-theme($apod-theme-light);
+@include app-components-theme($apod-theme-light);
 
 .dark {
-  @include angular-material-theme($apod-theme-dark);
-  @include app-components-theme($apod-theme-dark);
+  @include angular-material-color($apod-theme-dark);
 }
