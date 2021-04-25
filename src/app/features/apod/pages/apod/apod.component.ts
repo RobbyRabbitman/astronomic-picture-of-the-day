@@ -5,7 +5,7 @@ import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apod, LOGGER, Logger } from '@core/model';
 import { StoreService } from '@core/services';
-import { formatDateToYYYYMMDD } from '@core/utilities';
+import { formatDateToYYYYMMDD, randomDateBetween } from '@core/utilities';
 import { APOD_DATE_QUERY_PARAM } from '@features/apod/routes/routes';
 import { ErrorService } from '@shared/components';
 import { BehaviorSubject, EMPTY, from, Observable, of } from 'rxjs';
@@ -52,6 +52,7 @@ export class ApodComponent implements OnInit {
   private _dateControl: FormControl;
   private _loading$: BehaviorSubject<boolean>;
   public readonly readonlyTextInput: boolean = true;
+  public readonly _randomDateBetween = randomDateBetween;
 
   constructor(
     private route: ActivatedRoute,

@@ -18,8 +18,11 @@
   }
   > footer {
     overflow: hidden; // idk, something overflows
-    .mat-icon-button {
+    .nav-button {
       @include mat-icon-button-size(50px);
+    }
+    .random-date-button {
+      @include mat-icon-button-size(30px);
     }
   }
 }

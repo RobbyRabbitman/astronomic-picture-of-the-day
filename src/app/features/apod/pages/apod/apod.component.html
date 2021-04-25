@@ -24,13 +24,13 @@
       fxLayoutGap="1rem"
       color="accent"
     >
-      <button
+      <button class="nav-button"
         *ngIf="backward$ | async as backward"
         [disabled]="backward.getTime() <= minDate.getTime()"
         (click)="next(backward)"
         mat-icon-button
       >
-        <mat-icon [inline]="true">navigate_before</mat-icon>
+        <mat-icon  [inline]="true">navigate_before</mat-icon>
       </button>
       <mat-form-field fxFlex="1 1 140px">
         <input
@@ -44,14 +44,20 @@
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker color="accent" #picker></mat-datepicker>
-      </mat-form-field>
-      <button
+      </mat-form-field> 
+      <button class="random-date-button" *ngIf="minDate && maxDate"
+        (click)="next(_randomDateBetween(minDate,maxDate))"
+        mat-icon-button
+      >
+        <mat-icon [inline]="true">shuffle</mat-icon>
+      </button>
+      <button class="nav-button"
         *ngIf="forward$ | async as forward"
         [disabled]="forward.getTime() >= maxDate.getTime()"
         (click)="next(forward)"
         mat-icon-button
       >
-        <mat-icon [inline]="true">navigate_next</mat-icon>
+        <mat-icon class="nav-icon" [inline]="true">navigate_next</mat-icon>
       </button>
     </mat-toolbar>
   </footer>
