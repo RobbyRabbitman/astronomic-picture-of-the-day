@@ -20,6 +20,7 @@ import {
   tap,
 } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MAX_DATE_APOD, MIN_DATE_APOD } from './token';
 
 const FORMATS: MatDateFormats = {
   parse: {
@@ -37,7 +38,11 @@ const FORMATS: MatDateFormats = {
   selector: 'app-apod',
   templateUrl: './apod.component.html',
   styleUrls: ['./apod.component.scss'],
-  providers: [{ provide: MAT_DATE_FORMATS, useValue: FORMATS }], // doesnt work :(
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: FORMATS },
+    { provide: MIN_DATE_APOD, useValue: new Date(1995, 5, 16) },
+    { provide: MAX_DATE_APOD, useValue: new Date() },
+  ], // doesnt work :(
 })
 export class ApodComponent implements OnInit {
   private _apod$: BehaviorSubject<Apod>;
@@ -54,7 +59,9 @@ export class ApodComponent implements OnInit {
     public store: StoreService,
     private errorService: ErrorService,
     private layout: BreakpointObserver,
-    @Inject(LOGGER) @Optional() private logger: Logger
+    @Inject(LOGGER) @Optional() private logger: Logger,
+    @Inject(MIN_DATE_APOD) @Optional() public readonly minDate: Date,
+    @Inject(MAX_DATE_APOD) @Optional() public readonly maxDate: Date
   ) {}
 
   public get apod$(): Observable<Apod> {
@@ -135,7 +142,7 @@ export class ApodComponent implements OnInit {
               switch (caught.status) {
                 case 400:
                   error = {
-                    message: `No image for ${date.toLocaleDateString()} yet ${String.fromCodePoint(
+                    message: `No image for ${date.toLocaleDateString()} ${String.fromCodePoint(
                       0x1f622
                     )}`,
                     name: caught.statusText,
