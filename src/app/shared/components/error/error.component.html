@@ -1,7 +1,6 @@
-<h1 mat-dialog-title>{{ error.name }}</h1>
+<h1 mat-dialog-title>{{ error?.name || "Error" }}</h1>
 <div mat-dialog-content>
-  <h3>{{ error.message }}</h3>
-  <p>{{ error.stack }}</p>
+  <h3>{{ error?.message || "Oops, something went wrong :(" }}</h3>
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
