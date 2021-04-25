@@ -26,6 +26,7 @@
     >
       <button
         *ngIf="backward$ | async as backward"
+        [disabled]="backward.getTime() <= minDate.getTime()"
         (click)="next(backward)"
         mat-icon-button
       >
@@ -46,6 +47,7 @@
       </mat-form-field>
       <button
         *ngIf="forward$ | async as forward"
+        [disabled]="forward.getTime() >= maxDate.getTime()"
         (click)="next(forward)"
         mat-icon-button
       >
