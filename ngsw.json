@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1619357396134,
+  "timestamp": 1622493018911,
   "index": "/astronomic-picture-of-the-day/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,13 @@
         "ignoreVary": true
       },
       "urls": [
-        "/astronomic-picture-of-the-day/4.f680c0d3facc8955fc86.js",
+        "/astronomic-picture-of-the-day/102.89fc6f89b9b878a17788.js",
         "/astronomic-picture-of-the-day/index.html",
-        "/astronomic-picture-of-the-day/main.7ef4c9ac44b97e264d05.js",
+        "/astronomic-picture-of-the-day/main.155ca2d2e68eeb4fa0ac.js",
         "/astronomic-picture-of-the-day/manifest.webmanifest",
-        "/astronomic-picture-of-the-day/polyfills.bf99d438b005d57b2b31.js",
-        "/astronomic-picture-of-the-day/runtime.7a8951d3495036461523.js",
-        "/astronomic-picture-of-the-day/styles.82366585ebe4b5df838b.css"
+        "/astronomic-picture-of-the-day/polyfills.f8a6946108c6820c4c61.js",
+        "/astronomic-picture-of-the-day/runtime.3b7d08e87f1b6470d2e2.js",
+        "/astronomic-picture-of-the-day/styles.1327d2b42e11199cfb57.css"
       ],
       "patterns": []
     },
@@ -44,7 +44,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/astronomic-picture-of-the-day/4.f680c0d3facc8955fc86.js": "36837b6a4cb9c50637f707f5bb203cd4ca59ff84",
+    "/astronomic-picture-of-the-day/102.89fc6f89b9b878a17788.js": "71a207483597accf94fc720bd9d18f5d36c30e48",
     "/astronomic-picture-of-the-day/assets/icons/github.svg": "8d5d28aab9432ced424aeb0fbb998745681223fa",
     "/astronomic-picture-of-the-day/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/astronomic-picture-of-the-day/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
@@ -54,12 +54,12 @@
     "/astronomic-picture-of-the-day/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/astronomic-picture-of-the-day/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/astronomic-picture-of-the-day/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "/astronomic-picture-of-the-day/index.html": "fd40d049c63e8c0a1973aeffc69641831763e782",
-    "/astronomic-picture-of-the-day/main.7ef4c9ac44b97e264d05.js": "d3cc2d7fab4bf9f0140a863cbf09934121285ca7",
+    "/astronomic-picture-of-the-day/index.html": "004585ffd1b7a3b09cc9b66ad23b546f46f73798",
+    "/astronomic-picture-of-the-day/main.155ca2d2e68eeb4fa0ac.js": "73fe9f325403e9127b798efff44f660e7888de2f",
     "/astronomic-picture-of-the-day/manifest.webmanifest": "6591018f28e81582bafa59fb11a01d307d6d47ea",
-    "/astronomic-picture-of-the-day/polyfills.bf99d438b005d57b2b31.js": "763cd3b34dfa4600ebb9d9588ec7116988e98920",
-    "/astronomic-picture-of-the-day/runtime.7a8951d3495036461523.js": "3e3e1c20bf4a2e83354a461fea74e38090122c73",
-    "/astronomic-picture-of-the-day/styles.82366585ebe4b5df838b.css": "e38a51054ca6a76c9a56f8e6c551994f1d4eb612"
+    "/astronomic-picture-of-the-day/polyfills.f8a6946108c6820c4c61.js": "113d3d7fb66ffb2a17280eaea415acafb7836cd1",
+    "/astronomic-picture-of-the-day/runtime.3b7d08e87f1b6470d2e2.js": "2c76b2465768d6c27f5d06aaebf65768737b70c4",
+    "/astronomic-picture-of-the-day/styles.1327d2b42e11199cfb57.css": "acec93f7d3d3975a9f268ff98460839dcadef391"
   },
   "navigationUrls": [
     {
