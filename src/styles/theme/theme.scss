@@ -1,13 +1,13 @@
-@import "~@angular/material/theming";
+@use '~@angular/material' as mat;
 @import "./app.components.scss";
 
-@include mat-core();
+@include mat.core();
 
-$apod-primary: mat-palette($mat-indigo);
-$apod-accent: mat-palette($mat-red, A400, A100, A400);
-$apod-warn: mat-palette($mat-red);
+$apod-primary: mat.define-palette(mat.$indigo-palette);
+$apod-accent: mat.define-palette(mat.$red-palette, A400, A100, A400);
+$apod-warn: mat.define-palette(mat.$red-palette);
 
-$apod-theme-light: mat-light-theme(
+$apod-theme-light: mat.define-light-theme(
   (
     color: (
       primary: $apod-primary,
@@ -17,7 +17,7 @@ $apod-theme-light: mat-light-theme(
   )
 );
 
-$apod-theme-dark: mat-dark-theme(
+$apod-theme-dark: mat.define-dark-theme(
   (
     color: (
       primary: $apod-primary,
@@ -27,9 +27,9 @@ $apod-theme-dark: mat-dark-theme(
   )
 );
 
-@include angular-material-theme($apod-theme-light);
+@include mat.all-component-themes($apod-theme-light);
 @include app-components-theme($apod-theme-light);
 
 .dark {
-  @include angular-material-color($apod-theme-dark);
+  @include mat.all-component-colors($apod-theme-dark);
 }
